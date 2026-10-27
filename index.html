@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DJ Stereofuchs</title>
+<meta name="description" content="DJ Stereofuchs: Mixes, Musik und ein Fuchs mit Kopfhörern. Nicht ganz ernst gemeint.">
+<meta name="theme-color" content="#E9EEF3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F161E" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="DJ Stereofuchs">
+<meta property="og:description" content="Zwei Ohren, ein Beat. Mixes vom Fuchs.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='100' fill='%2317202B'/%3E%3Cpolygon points='38,22 92,62 40,100' fill='%23F0923A'/%3E%3Cpolygon points='162,22 108,62 160,100' fill='%23F0923A'/%3E%3Cpath d='M100 52C142 52 172 74 182 108L100 176 18 108C28 74 58 52 100 52Z' fill='%23F0923A'/%3E%3Cpath d='M18 108L100 176 62 128Z M182 108L100 176 138 128Z M100 100L120 128 100 176 80 128Z' fill='%23EEF3F8'/%3E%3Cpath d='M29 100C25 14 175 14 171 100' fill='none' stroke='%2338B0F2' stroke-width='11' stroke-linecap='round'/%3E%3Crect x='12' y='88' width='34' height='52' rx='13' fill='%2338B0F2'/%3E%3Crect x='154' y='88' width='34' height='52' rx='13' fill='%2338B0F2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Farben wie beim Konzertkalender: Marineblau, Blau, Orange. Hell und dunkel automatisch. */
+:root {
+  --bg: #E9EEF3;
+  --surface: #F8FAFC;
+  --ink: #17202B;
+  --muted: #526071;
+  --line: #C4CFDA;
+  --accent: #0E74B8;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #D3E8F5;
+  --accent2: #D9731A;
+  --fox: #D9731A;
+  --fox-dark: #9C4F0B;
+  --cheek: #F8FAFC;
+  --badge: #17202B;
+  --font-display: 'Bricolage Grotesque', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --gutter: clamp(16px, 4vw, 56px);
+  --gap: clamp(16px, 3vw, 40px);
+  --step: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F161E; --surface: #18212C; --ink: #EEF3F8; --muted: #9DAABA; --line: #2C3A4A;
+    --accent: #38B0F2; --accent-ink: #0B1219; --accent-soft: #12344D; --accent2: #F0923A;
+    --fox: #F0923A; --fox-dark: #B9651C; --cheek: #EEF3F8; --badge: #0B1219;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F161E; --surface: #18212C; --ink: #EEF3F8; --muted: #9DAABA; --line: #2C3A4A;
+  --accent: #38B0F2; --accent-ink: #0B1219; --accent-soft: #12344D; --accent2: #F0923A;
+  --fox: #F0923A; --fox-dark: #B9651C; --cheek: #EEF3F8; --badge: #0B1219;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: var(--step); line-height: 1.5;
+  padding-block: clamp(16px, 3vw, 32px) clamp(32px, 6vw, 72px);
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+img, svg { max-width: 100%; }
+.wrap { max-width: 1100px; margin: 0 auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Navigation */
+.topnav {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  padding-bottom: 14px; margin-bottom: clamp(24px, 4vw, 44px); border-bottom: 1px solid var(--line);
+}
+.brand { font-family: var(--font-mono); font-size: 14px; letter-spacing: 0.06em; text-decoration: none; color: var(--muted); }
+.brand:hover { color: var(--ink); }
+.topnav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 8px; flex-wrap: wrap; }
+.topnav a.nav {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 6px 16px; border-radius: 999px;
+  border: 1px solid var(--line); text-decoration: none; font-weight: 500; font-size: 15px;
+}
+.topnav a.nav:hover { border-color: var(--ink); }
+.topnav a.nav[aria-current="page"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* Kopf */
+header {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--gap);
+  margin-bottom: clamp(20px, 3vw, 36px);
+}
+.head-text { display: grid; gap: clamp(8px, 1.5vw, 14px); min-width: 0; }
+.eyebrow { font-family: var(--font-mono); font-size: clamp(11px, 0.7rem + 0.15vw, 13px); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+h1 {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(2.5rem, 1rem + 6.4vw, 5.8rem); line-height: 0.92; letter-spacing: -0.03em; margin: 0;
+}
+h1 span { display: block; color: var(--accent); }
+.intro { max-width: 52ch; margin: 0; color: var(--muted); font-size: clamp(1rem, 0.95rem + 0.3vw, 1.2rem); }
+.logo {
+  width: clamp(128px, 20vw, 250px); aspect-ratio: 1 / 1; border-radius: 50%;
+  background: var(--badge); display: grid; place-items: center;
+  filter: drop-shadow(0 8px 20px rgb(15 22 30 / 0.28));
+}
+.logo svg { width: 82%; height: 82%; display: block; }
+@media (max-width: 640px) {
+  header { grid-template-columns: minmax(0, 1fr); }
+  .logo { order: -1; width: clamp(112px, 34vw, 160px); }
+}
+
+/* Equalizer */
+.eq { display: flex; align-items: flex-end; gap: clamp(3px, 0.6vw, 6px); height: clamp(40px, 6vw, 64px); margin: 0 0 clamp(28px, 5vw, 56px); }
+.eq span {
+  flex: 1; height: 100%; background: var(--accent); border-radius: 3px 3px 0 0;
+  transform-origin: bottom; transform: scaleY(var(--lo, 0.3));
+  animation: eq var(--dur, 0.8s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+.eq span:nth-child(5n) { background: var(--accent2); }
+@keyframes eq { to { transform: scaleY(1); } }
+
+/* Abschnitte */
+section { margin-bottom: clamp(32px, 5vw, 56px); }
+.label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin: 0 0 6px; }
+h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.6rem); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: clamp(14px, 2vw, 24px); }
+
+/* Mix */
+.mix-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.2rem, 1rem + 0.8vw, 1.6rem); margin: 0 0 4px; }
+.mix-note { margin: 0 0 16px; color: var(--muted); max-width: 60ch; }
+.player-box { border-radius: 12px; overflow: hidden; margin-bottom: 14px; }
+.player-box iframe { display: block; width: 100%; border: 0; }
+.consent {
+  display: grid; gap: 12px; justify-items: start; padding: clamp(16px, 3vw, 28px);
+  background: var(--accent-soft); border-radius: 12px;
+}
+.consent p { margin: 0; font-size: 14px; color: var(--muted); max-width: 56ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;
+  font-family: var(--font-body); font-weight: 600; font-size: 15px; text-decoration: none; text-align: center;
+  min-height: 44px; padding: 10px 18px; border-radius: 8px; border: 2px solid var(--ink);
+}
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn:hover { transform: translateY(-1px); }
+.btn::before { content: ""; width: 0; height: 0; border-left: 9px solid var(--accent2); border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
+.btn.ghost::before, .btn.nobullet::before { display: none; }
+
+footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
+
+@media (max-width: 520px) { .actions .btn { flex: 1 1 100%; } }
+@media (prefers-reduced-motion: reduce) {
+  .eq span { animation: none; transform: scaleY(calc(var(--lo, 0.3) + 0.3)); }
+  .btn:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav" aria-label="Hauptmenü">
+    <a class="brand" href="https://stetwig.ch/">stetwig.ch</a>
+    <ul>
+      <li><a class="nav" href="https://konzerte.stetwig.ch/">Konzerte</a></li>
+      <li><a class="nav" href="./" aria-current="page">DJ Stereofuchs</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <div class="head-text">
+      <div class="eyebrow">Zürich · nicht ganz ernst gemeint</div>
+      <h1>DJ <span>Stereofuchs</span></h1>
+      <p class="intro">Zwei Ohren, zwei Kanäle, ein Beat. Hier landen meine Mixes, ein paar Fuchs-Fakten und alles, was beim Auflegen sonst noch hängen bleibt.</p>
+    </div>
+    <div class="logo">
+      <svg viewBox="0 0 200 200" role="img" aria-label="Fuchs mit Kopfhörern">
+        <polygon points="38,22 92,62 40,100" fill="var(--fox)"/>
+        <polygon points="162,22 108,62 160,100" fill="var(--fox)"/>
+        <polygon points="48,46 78,66 50,86" fill="var(--fox-dark)"/>
+        <polygon points="152,46 122,66 150,86" fill="var(--fox-dark)"/>
+        <path d="M100 52C142 52 172 74 182 108L100 176 18 108C28 74 58 52 100 52Z" fill="var(--fox)"/>
+        <path d="M18 108L100 176 62 128Z" fill="var(--cheek)"/>
+        <path d="M182 108L100 176 138 128Z" fill="var(--cheek)"/>
+        <path d="M100 102L120 130 100 176 80 130Z" fill="var(--cheek)"/>
+        <path d="M64 100Q76 91 88 102Q76 111 64 100Z" fill="#17202B"/>
+        <path d="M136 100Q124 91 112 102Q124 111 136 100Z" fill="#17202B"/>
+        <ellipse cx="100" cy="172" rx="9" ry="6" fill="#17202B"/>
+        <path d="M29 100C25 14 175 14 171 100" fill="none" stroke="var(--accent)" stroke-width="10" stroke-linecap="round"/>
+        <rect x="12" y="88" width="34" height="52" rx="13" fill="var(--accent)"/>
+        <rect x="154" y="88" width="34" height="52" rx="13" fill="var(--accent)"/>
+        <text x="29" y="121" text-anchor="middle" font-family="DM Mono, monospace" font-weight="500" font-size="18" fill="var(--accent-ink)">L</text>
+        <text x="171" y="121" text-anchor="middle" font-family="DM Mono, monospace" font-weight="500" font-size="18" fill="var(--accent-ink)">R</text>
+      </svg>
+    </div>
+  </header>
+
+  <div class="eq" id="eq" aria-hidden="true"></div>
+
+  <main>
+    <section aria-labelledby="mix-h">
+      <p class="label">Frisch aus dem Bau</p>
+      <h2 id="mix-h">Der Mix</h2>
+      <div class="card" id="mixCard"></div>
+    </section>
+
+  </main>
+
+  <footer>DJ Stereofuchs · stetwig.ch · Der SoundCloud-Player wird erst nach einem Klick geladen, vorher werden keine Daten an SoundCloud übertragen.</footer>
+</div>
+
+<script>
+(function () {
+  /* ====== Hier anpassen ====== */
+  var MIX = {
+    title: 'Mix 1',
+    note: 'Ungeschnitten, ungeplant, ungefähr im Takt.',
+    /* SoundCloud-Link zum Mix. Erlaubt ist der normale Link oder der komplette Einbettungs-Code von SoundCloud. */
+    url: 'https://soundcloud.com/stephan-fuchs-204489924/mix-1',
+    visual: true   /* true = grosser Player mit Bild, false = schmale Leiste */
+  };
+  /* =========================== */
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]; }); }
+
+  function scUrl(u) {
+    u = (u || '').trim();
+    var m = u.match(/src=["']([^"']+)["']/i);
+    if (m) {
+      try { u = new URL(m[1].replace(/&amp;/g, '&')).searchParams.get('url') || ''; } catch (e) { u = ''; }
+    }
+    return /^https:\/\/(on\.)?soundcloud\.com\//i.test(u) ? u : '';
+  }
+
+  var card = document.getElementById('mixCard');
+  var url = scUrl(MIX.url);
+
+  if (!url) {
+    card.innerHTML = '<h3 class="mix-title">Mix folgt</h3><p class="mix-note">Der Fuchs ist noch im Studio.</p>';
+  } else {
+    card.innerHTML =
+      '<h3 class="mix-title">' + esc(MIX.title) + '</h3>' +
+      '<p class="mix-note">' + esc(MIX.note) + '</p>' +
+      '<div class="player-box" id="playerBox">' +
+        '<div class="consent">' +
+          '<p>Der Mix liegt bei SoundCloud. Mit dem Klick lädst du den Player von dort, dabei werden Daten an SoundCloud übertragen.</p>' +
+          '<button type="button" class="btn primary" id="loadMix">Mix abspielen</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="actions"><a class="btn ghost" href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">Auf SoundCloud öffnen</a></div>';
+
+    document.getElementById('loadMix').addEventListener('click', function () {
+      var src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(url) +
+        '&color=%23D9731A&auto_play=true&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=' + (MIX.visual ? 'true' : 'false');
+      document.getElementById('playerBox').innerHTML =
+        '<iframe title="SoundCloud: ' + esc(MIX.title) + '" width="100%" height="' + (MIX.visual ? 300 : 166) + '" scrolling="no" allow="autoplay" src="' + src + '"></iframe>';
+    });
+  }
+
+  /* Equalizer */
+  var eq = document.getElementById('eq');
+  for (var i = 0; i < 32; i++) {
+    var s = document.createElement('span');
+    s.style.setProperty('--lo', (0.12 + Math.random() * 0.3).toFixed(2));
+    s.style.setProperty('--dur', (0.5 + Math.random() * 0.9).toFixed(2) + 's');
+    s.style.setProperty('--delay', (-Math.random() * 1.2).toFixed(2) + 's');
+    eq.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>
